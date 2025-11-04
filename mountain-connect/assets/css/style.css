@@ -1,0 +1,82 @@
+body {
+            /* Fondo y centrado */
+            background-color: #f4f7f6; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .login-card {
+            /* Contenedor del formulario */
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 380px;
+        }
+
+        .login-card h2 {
+            /* Título */
+            margin-bottom: 25px;
+            font-weight: bold;
+            color: #333;
+            text-align: center;
+        }
+
+        .form-group {
+            /* Espacio entre campos */
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            /* Estilo de las etiquetas */
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #555;
+        }
+
+        .form-control {
+            /* Estilo de los inputs */
+            width: 95%; 
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box; /* Incluye padding y borde en el ancho total */
+        }
+
+        .btn-submit {
+            /* Botón principal */
+            background-color: #2e8b57; /* Verde Bosque */
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1.1em;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .btn-submit:hover {
+            background-color: #246a42;
+        }
+
+        .registro-link {
+            /* Enlace de registro */
+            text-align: center;
+            margin-top: 15px;
+            font-size: 0.9em;
+        }
+        .registro-link a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .registro-link a:hover {
+            text-decoration: underline;
+        }
