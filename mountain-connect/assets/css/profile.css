@@ -1,0 +1,26 @@
+main{
+            /* Fondo y centrado */
+            background-color: #f4f7f6; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .profile-card {
+            /* Contenedor del formulario */
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 380px;
+        }
+        .profile-card h2 {
+            /* Título */
+            margin-bottom: 25px;
+            font-weight: bold;
+            color: #333;
+            text-align: center;
+        }

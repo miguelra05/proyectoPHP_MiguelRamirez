@@ -1,0 +1,103 @@
+main {
+            /* Fondo y centrado */
+            background-color: #f4f7f6; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .register-card {
+            /* Contenedor del formulario */
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 380px;
+        }
+
+        .register-card h2 {
+            /* Título */
+            margin-bottom: 25px;
+            font-weight: bold;
+            color: #333;
+            text-align: center;
+        }
+
+        .mensaje-error {
+            padding: 10px !important;
+            border-radius: 10px !important;
+            margin-bottom: 15px !important;
+            text-align: center !important;
+            font-weight: bold !important;
+            background-color: red !important;
+            border: 1px solid #ff4d4d !important;
+            color: black !important;
+        }
+
+        .mensaje-exito {
+            padding: 10px !important;
+            border-radius: 10px !important;
+            margin-bottom: 15px !important;
+            text-align: center !important;
+            font-weight: bold !important;
+            color: gold !important;
+            border: 1px solid #6fcf97 !important;
+            background-color: green !important;
+        }
+        .form-group {
+            /* Espacio entre campos */
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            /* Estilo de las etiquetas */
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #555;
+        }
+
+        .form-control {
+            /* Estilo de los inputs */
+            width: 95%; 
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box; /* Incluye padding y borde en el ancho total */
+        }
+
+        .btn-submit {
+            /* Botón principal */
+            background-color: #2e8b57; /* Verde Bosque */
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1.1em;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .btn-submit:hover {
+            background-color: #246a42;
+        }
+
+        .registro-link {
+            /* Enlace de registro */
+            text-align: center;
+            margin-top: 15px;
+            font-size: 0.9em;
+        }
+        .registro-link a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .registro-link a:hover {
+            text-decoration: underline;
+        }

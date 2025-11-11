@@ -1,0 +1,105 @@
+body{
+    margin: 0;
+}
+.header {
+    width: 100%;
+    background-color: #ffffff;
+    border-bottom: 4px solid #388e3c; 
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 15px 40px;
+    box-sizing: border-box;
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* CLAVE: Asegura que todos los elementos (logo, nav, acciones) estén verticalmente centrados */
+}
+
+/* -------------------------------------- */
+/* 2. LOGOTIPO */
+/* -------------------------------------- */
+.logo a {
+    font-family: 'Arial Black', sans-serif; /* Fuente fuerte y legible */
+    font-size: 1.8rem;
+    color: #388e3c; /* Verde montaña dominante */
+    text-decoration: none;
+    font-weight: 900;
+    letter-spacing: -0.5px; /* Ligero ajuste para un look más compacto */
+    transition: color 0.3s;
+}
+
+.logo a:hover {
+    color: #2e7d32; /* Un toque más oscuro al pasar el ratón */
+}
+
+/* -------------------------------------- */
+/* 3. NAVEGACIÓN PRINCIPAL (main-nav) */
+/* -------------------------------------- */
+.main-nav ul {
+    list-style: none; /* Eliminar los puntos de la lista */
+    padding: 0;
+    margin: 0;
+    display: flex; /* Alinear horizontalmente */
+    gap: 25px; /* Espacio entre los elementos del menú */
+}
+
+.main-nav a {
+    text-decoration: none;
+    color: #333333; /* Texto gris oscuro */
+    font-weight: 600;
+    padding: 5px 0;
+    transition: color 0.3s, border-bottom 0.3s;
+}
+
+.main-nav a:hover,
+.main-nav a.active { /* Estilo para el enlace de la página actual si lo usas */
+    color: #388e3c;
+    border-bottom: 2px solid #388e3c; /* Efecto de línea debajo */
+}
+
+/* -------------------------------------- */
+/* 4. ACCIONES DE USUARIO (user-actions) */
+/* -------------------------------------- */
+.user-actions {
+    display: flex;
+    align-items: center; /* CLAVE: Centra verticalmente los botones y el enlace de perfil */
+    gap: 15px; /* Espacio entre los botones/enlaces */
+}
+
+/* -------------------------------------- */
+/* 3. ESTILO PARA EL ENLACE DE PERFIL (Logueado) */
+/* -------------------------------------- */
+.user-actions .btn-profile {
+    /* Estilo base para el enlace de perfil que muestra el nombre */
+    text-decoration: none;
+    color: #333333;
+    font-weight: 600;
+    padding: 8px 10px;
+    border: 1px solid transparent; /* Para que no salte al hacer hover */
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.user-actions .btn-profile:hover {
+    color: #388e3c;
+    background-color: #f4f7f6; /* Fondo suave al pasar el ratón */
+    border-color: #c8e6c9;
+}
+
+/* Estilo para Perfil o Logout (si se usa) */
+.user-actions .btn-logout {
+    background-color: #d32f2f; /* Rojo/Tono de peligro o acción final */
+    color: white;
+    padding: 8px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.user-actions .btn-logout:hover {
+    background-color: #c0392b; /* Rojo más oscuro al hacer hover */
+}

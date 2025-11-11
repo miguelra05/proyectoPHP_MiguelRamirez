@@ -1,7 +1,8 @@
 <?php
     $errores = [];
     $usuarios = [];
-    // colección de los datos introducidos en el formulatio
+    $usuarios = $_SESSION['usuarios'] ?? []; //Comprueba si el array usuarios existe y si no, inicializa uno vacío, sinó anida otro al array.
+   // colección de los datos introducidos en el formulario
     if($_SERVER['REQUEST_METHOD'] === 'POST'){
         $user = $_POST['username'];
         $email = $_POST['email'];
@@ -15,7 +16,7 @@
             $errores[] = "El usuario es obligatorio.";
         }
         if(empty($email)){
-            $errores = "El email no puede estar vacío.";
+            $errores[] = "El email no puede estar vacío.";
         }
         if(strlen($email)>0 && !filter_var($email, FILTER_VALIDATE_EMAIL)){
             $errores[] = " Formato de email no válido.";
@@ -51,7 +52,6 @@
             $errores[] = "Selecciona una provincia";
         }
         if(empty($errores)){
-            echo "<p>Datos introducidos correctamente</p>";
             $nuevoUsuario = [
                 "username" => $user,
                 "email" => $email,
@@ -60,27 +60,36 @@
                 "especialidad" => $especialidad,
                 "provincia" => $prov
             ];
-            $usuarios[] = $nuevoUsuario;
+            $usuarios[] = $nuevoUsuario;// mete el "nuevo usuario" en el array usuarios
+            $_SESSION['usuarios'] = $usuarios;
+            $mensaje = "Te has registrado con éxito";
+            $tipo_mensaje = "exito";
+            Header("Location: login.php");
+            exit();
         }else{
-            foreach($errores as $error){
-                echo "<p>$error</p>";
-            }
+            #foreach($errores as $error){
+                $mensaje = implode("<br>", $errores);
+                $tipo_mensaje = "error";
+            #}
         }
     }
 
 ?>
-<!DOCTYPE html>
-<html>
-    <head>
        <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Registrarse - MountainConnect</title>
-        <link rel="stylesheet" href="../assets/css/style.css"> 
-    </head>
-    <body>
+        <link rel="stylesheet" href="../assets/css/register.css"> 
+    <!--body-->
+    <main>
         <div class="register-card">
         <h2>Crear Cuenta</h2>
-
+        <?php
+            if (isset($mensaje)) {
+                echo '<div class="mensaje-' . $tipo_mensaje . '">';
+                echo $mensaje;
+                echo "</div>";
+            }
+        ?>
         <form action="register.php" method="POST">
             
             <div class="form-group">
@@ -155,5 +164,4 @@
             ¿Ya tienes cuenta? <a href="login.php">Iniciar Sesión</a>
         </div>
     </div>
-    </body>
-</html>
+        </main>
