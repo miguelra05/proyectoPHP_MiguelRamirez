@@ -1,13 +1,229 @@
+body {
+    background-color: #f4f7f6; 
+    font-family: Arial, sans-serif;
+    color: #333333;
+}
+/* ================================================= */
+/* 1. ESTILO DE LA ZONA PRINCIPAL (MAIN) */
+/* ================================================= */
 main {
-            /* Fondo y centrado */
-            background-color: #f4f7f6; 
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-            font-family: Arial, sans-serif;
-        }
-        h1{
-            color: yellowgreen
-        }
+    background-color: #f4f7f6; 
+    /* CRÍTICO: Flexbox para APILAR VERTICALMENTE el h1 y el wrapper */
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; /* Centra el h1 y el wrapper horizontalmente */
+    
+    width: 100%;
+    padding: 40px 20px; 
+    margin: 0;
+    min-height: auto; 
+}
+
+/* -------------------------------------- */
+/* 1.1. Contenedor de Contenido (Wrapper) */
+/* -------------------------------------- */
+.main-content-wrapper {
+    /* Define el ancho máximo del contenido de la página */
+    width: 100%; 
+    max-width: 900px;
+    margin-bottom: 30px; 
+    
+    /* CRÍTICO: Asegura que solo el contenido dinámico esté centrado */
+    display: flex; 
+    justify-content: center;
+    align-items: flex-start; /* Alinea secciones hacia arriba, no centradas */
+}
+
+/* -------------------------------------- */
+/* 1.2. Estilo de Títulos H1 y H2 */
+/* -------------------------------------- */
+h1 {
+    color: #388e3c; /* Verde Montaña */
+    font-size: 2.5rem;
+    margin-bottom: 30px; 
+    font-weight: 700;
+    text-align: center;
+    width: 90%; 
+    max-width: 900px;
+}
+h2 {
+    color: #388e3c; 
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+
+/* ================================================= */
+/* 2. ESTILOS DE BLOQUES DINÁMICOS (.user-dashboard y .welcome-guest) */
+/* ================================================= */
+.user-dashboard,
+.welcome-guest {
+    /* Bloque visual principal: Sombra, borde y fondo blanco */
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
+    text-align: center;
+    
+    /* Tamaños */
+    width: 100%; /* Ocupa todo el ancho dentro del main-content-wrapper */
+    
+    /* Resuelve el conflicto de alineación final */
+    display: block; 
+    color: #555555;
+}
+
+.welcome-guest p,
+.user-dashboard p {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+}
+
+/* -------------------------------------- */
+/* 3. MENÚ DE ACCIONES (LOGUEADO) */
+/* -------------------------------------- */
+.dashboard-menu {
+    margin-top: 30px;
+    border-top: 1px solid #eeeeee;
+    padding-top: 20px;
+}
+
+.dashboard-menu h3 {
+    color: #333333;
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.dashboard-nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: center;
+    gap: 15px;
+}
+
+.dash-link {
+    display: inline-block;
+    padding: 15px 25px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+/* Enlaces de Acción */
+.profile-link, .create-link {
+    background-color: #4CAF50; 
+    color: white;
+}
+.profile-link:hover, .create-link:hover {
+    background-color: #388e3c;
+}
+
+/* Enlaces de Exploración */
+.explore-link {
+    background-color: #e8f5e9; 
+    color: #388e3c;
+    border: 1px solid #a5d6a7;
+}
+.explore-link:hover {
+    background-color: #dcedc8;
+}
+
+.dash-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+
+/* -------------------------------------- */
+/* 4. BOTONES DE INVITADO (NO LOGUEADO) */
+/* -------------------------------------- */
+.guest-actions {
+    margin-bottom: 20px;
+}
+
+.btn-cta {
+    display: inline-block;
+    padding: 12px 30px;
+    margin: 0 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: background-color 0.3s;
+}
+
+.primary-cta {
+    background-color: #388e3c; 
+    color: white;
+}
+.primary-cta:hover {
+    background-color: #2e7d32;
+}
+
+.secondary-cta {
+    background-color: transparent;
+    border: 2px solid #388e3c;
+    color: #388e3c;
+}
+.secondary-cta:hover {
+    background-color: #388e3c;
+    color: white;
+}
+/* ================================================= */
+/* 5. SECCIÓN DE INFORMACIÓN ADICIONAL (.site-info) */
+/* ================================================= */
+
+.site-info {
+    /* Mantiene el diseño centrado y limpio */
+    width: 90%;
+    max-width: 900px;
+    padding: 30px 0;
+    text-align: center;
+    margin-bottom: 40px; /* Separación del footer */
+}
+
+.site-info h2 {
+    color: #388e3c; /* Verde Montaña */
+    margin-bottom: 30px;
+    font-size: 1.8rem;
+}
+
+.info-grid {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    margin-top: 20px;
+    flex-wrap: wrap; /* Para que funcione bien en pantallas pequeñas */
+}
+
+.info-item {
+    flex: 1; /* Distribuye el espacio equitativamente */
+    min-width: 250px;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.info-item h3 {
+    color: #5cb85c; /* Un verde ligeramente diferente para el sub-título */
+    margin-top: 10px;
+    font-size: 1.1rem;
+}
+
+.info-item p {
+    color: #666666;
+    font-size: 0.95rem;
+}
+
+/* Estilos de Iconos (si los implementas) */
+.info-item i {
+    font-size: 2.5rem;
+    color: #388e3c;
+    display: block;
+    margin-bottom: 10px;
+}

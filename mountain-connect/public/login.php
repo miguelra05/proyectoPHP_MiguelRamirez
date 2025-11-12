@@ -1,4 +1,7 @@
 <?php
+    include "../includes/header.php";
+?>
+<?php
     $errores = [];
     $usuarios = $_SESSION['usuarios']??[]; //para guardar 
     if($_SERVER["REQUEST_METHOD"]=== 'POST'){
@@ -84,3 +87,6 @@
         </div>
     </div>
     </main>
+<?php
+    include "../includes/footer.php";
+?>

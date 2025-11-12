@@ -1,5 +1,9 @@
-body{
+html, body{
     margin: 0;
+    height: auto;
+    min-height: 100%;
+    overflow-y: auto;
+    display: block;
 }
 .header {
     width: 100%;
