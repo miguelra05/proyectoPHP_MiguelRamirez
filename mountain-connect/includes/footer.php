@@ -1,5 +1,13 @@
+<?php
+    $base_path = '';
+    if (strpos($_SERVER['PHP_SELF'], '/routes/') !== false) {
+        $base_path = '../';
+    } else if (strpos($_SERVER['PHP_SELF'], '/public/') !== false) {
+        $base_path = '';
+    }
+?>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="../assets/css/footer.css">
+<link rel="stylesheet" href="<?php echo $base_path; ?>../assets/css/footer.css">
     <footer>
         <div class="footer-container">
 

@@ -1,0 +1,217 @@
+/* 1. Contenedor Principal */
+.form-container {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    box-sizing: border-box;
+}
+
+.form-container h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 15px;
+    font-size: 1.8em;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 10px;
+}
+
+.form-container p {
+    text-align: center;
+    color: #666;
+    margin-bottom: 25px;
+    line-height: 1.5;
+}
+
+/* 2. Estilos del Formulario */
+.route-form {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+fieldset {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 25px;
+    background-color: #f9f9f9;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+legend {
+    font-weight: bold;
+    color: #333;
+    padding: 0 10px;
+    font-size: 1.1em;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #555;
+}
+
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+    font-size: 1em;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.2);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+/* 3. Estilos para campos en línea (distancia y desnivel) */
+.half-width {
+    display: flex;
+    gap: 15px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.half-width .form-group {
+    flex: 1;
+    margin-bottom: 0;
+}
+
+/* 4. Estilos para niveles (técnico y físico) -- AÑADIDO/CORREGIDO */
+.levels-group {
+    display: flex;
+    gap: 30px;
+    margin: 15px 0;
+}
+
+.level-item {
+    flex: 1;
+}
+
+.level-item label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #555;
+}
+
+.level-item select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background-color: white;
+    /* Asegurar que las etiquetas de select coincidan con el tamaño de input */
+    box-sizing: border-box; 
+    font-size: 1em;
+}
+
+/* 5. Estilos para checkboxes (época del año) -- AÑADIDO/CORREGIDO */
+.checkbox-group {
+    margin: 25px 0;
+    padding-top: 10px;
+    border-top: 1px solid #eee; /* Separador sutil */
+}
+
+.checkbox-group > label { /* Etiqueta principal (Época del Año Recomendada) */
+    display: block;
+    margin-bottom: 15px;
+    font-weight: bold;
+    color: #555;
+}
+
+.checkbox-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Más espacio para que no se peguen */
+}
+
+.checkbox-option {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.checkbox-option input[type="checkbox"] {
+    /* Estilo del checkbox */
+    width: 16px;
+    height: 16px;
+    margin: 0;
+    cursor: pointer;
+}
+
+.checkbox-option label {
+    margin: 0;
+    font-weight: normal;
+    cursor: pointer;
+    color: #333;
+}
+/* FIN: Estilos añadidos para los nuevos campos */
+
+
+.file-info {
+    font-size: 0.9em;
+    color: #666;
+    margin-bottom: 15px;
+    font-style: italic;
+}
+
+/* 6. Estilos para Subida de Archivos (Fotos) */
+.form-group input[type="file"] {
+    padding: 10px 0;
+    border: none;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* 7. Botón de Enviar */
+.btn-primary {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+    box-sizing: border-box;
+}
+
+.btn-primary:hover {
+    background-color: #218838;
+}
+
+/* 8. Mensajes de Error */
+.error-message {
+    color: #dc3545;
+    font-size: 0.9em;
+    margin-top: 5px;
+    padding-left: 5px;
+}

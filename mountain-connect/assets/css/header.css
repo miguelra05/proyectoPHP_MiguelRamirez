@@ -107,3 +107,20 @@ html, body{
 .user-actions .btn-logout:hover {
     background-color: #c0392b; /* Rojo más oscuro al hacer hover */
 }
+ /*crear ruta*/
+.user-actions .btn-crear {
+    /* Estilo base para el enlace de perfil que muestra el nombre */
+    text-decoration: none;
+    color: #333333;
+    font-weight: 600;
+    padding: 8px 10px;
+    border: 1px solid transparent; /* Para que no salte al hacer hover */
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.user-actions .btn-crear:hover {
+    color: #388e3c;
+    background-color: #f4f7f6; /* Fondo suave al pasar el ratón */
+    border-color: #c8e6c9;
+}
