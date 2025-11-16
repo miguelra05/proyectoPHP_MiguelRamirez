@@ -41,8 +41,11 @@
                         
                         <ul class="list-unstyled small mt-3">
                     <!-- el php dentro de las etiquetas pone cada valor en su campo-->
+                            <li><?php echo htmlspecialchars($ruta['descripcion']); ?></li>
+                            <li>En: <?php echo htmlspecialchars($ruta['provincia']); ?></li>
                             <li>Distancia: <?php echo htmlspecialchars($ruta['distancia']); ?> km</li>
                             <li>Desnivel: <?php echo htmlspecialchars($ruta['desnivel']); ?> m</li>
+                            <li>Duración: <?php echo htmlspecialchars($ruta['duracion']); ?> h</li>
                             <li>Dificultad: <?php echo htmlspecialchars($ruta['dificultad']); ?></li>
                         </ul>
                     </div>

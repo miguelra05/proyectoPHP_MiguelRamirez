@@ -13,6 +13,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $difRuta = $_POST['difficulty'];
     $distancia = $_POST['distance'];
     $desnivel = $_POST['elevation_gain'];
+    $horas =$_POST['duracion'];
+    $provincia = $_POST['provincia'];
     $nvlTec = $_POST['technical_level'];
     $nvlFis = $_POST['fitness_level'];
     $fotos = $_FILES['photos'];
@@ -39,6 +41,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
     if (!is_numeric($desnivel)) {
         $errores[] = "El valor del desnivel debe ser numérico.";
+    }
+    if (empty($horas)) {
+    $errores[] = "Indica la duración aproximada de la ruta en horas.";
+    }
+    if (!is_numeric($horas)) {
+    $errores[] = "El valor de la duración debe ser numérico.";
+    }
+    if (empty($provincia)) {
+        $errores[] = "Selecciona la provincia donde se encuentra la ruta.";
     }
     if (empty($nvlTec)) {
         $errores[] = "Introduce un nivel tecnico.";
@@ -102,6 +113,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 "dificultad" => $difRuta,
                 "distancia" => $distancia,
                 "desnivel" => $desnivel,
+                "duracion" => $horas,
+                "provincia" => $provincia,
                 "nivel_tecnico" => $nvlTec,
                 "nivel_fisico" => $nvlFis,
                 "imagen" => $nomFotos
@@ -152,6 +165,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <option value="4">Experto</option>
                 </select>
             </div>
+            <div class="form-group">
+                <label for="provincia">Provincia *</label>
+                <select id="provincia" name="provincia" required>
+                    <option value="">-- Selecciona Provincia --</option>
+                    <option value="madrid">Madrid</option>
+                    <option value="barcelona">Barcelona</option>
+                    <option value="zaragoza">Zaragoza</option>
+                    <option value="huesca">Huesca</option>
+                    <option value="teruel">Teruel</option>
+                    <option value="valencia">Valencia</option>
+                    </select>
+            </div>
         </fieldset>
 
         <fieldset>
@@ -166,6 +191,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div class="form-group">
                     <label for="elevation_gain">Desnivel Positivo (m) *</label>
                     <input type="number" id="elevation_gain" name="elevation_gain" required min="0">
+                </div>
+                <div class="form-group">
+                    <label for="duracion">Duración Aproximada (horas) *</label>
+                    <input type="number" id="duracion" name="duracion" required step="0.1" min="0.5">
                 </div>
             </div>
             <div class="levels-group">
