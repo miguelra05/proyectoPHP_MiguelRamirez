@@ -34,11 +34,7 @@ $loggedIn = isset($_SESSION['username']);
                         <ul>
                             <li><a href="profile.php" class="dash-link profile-link">Mi Perfil y Actividad</a></li>
                             <li><a href="routes/create.php" class="dash-link create-link">Crear Nueva Ruta</a></li>
-                            <li><a href="routes/list.php" class="dash-link explore-link">Explorar Rutas de Senderismo</a>
-                            </li>
-                            <li><a href="ferratas/list.php" class="dash-link explore-link">Explorar Vías Ferratas</a></li>
-                            <li><a href="climbing/list.php" class="dash-link explore-link">Explorar Vías de Escalada</a>
-                            </li>
+                            <li><a href="routes/list.php" class="dash-link explore-link">Explorar Rutas de Senderismo</a></li>
                         </ul>
                     </nav>
                 </div>

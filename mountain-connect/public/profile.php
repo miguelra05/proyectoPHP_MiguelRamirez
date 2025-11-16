@@ -2,7 +2,6 @@
     include "../includes/header.php";
 ?>
 <?php
-    session_start();
     if(!isset($_SESSION['usuario'])){
         Header("Location: login.php"); //Vuelve al login si no hay sessión activa
         exit();

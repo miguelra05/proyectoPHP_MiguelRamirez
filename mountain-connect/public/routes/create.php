@@ -2,6 +2,10 @@
     include "../../includes/header.php";
 ?>
 <?php
+    if(!isset($_SESSION['usuario'])){
+        Header("Location: ../login.php"); //Vuelve al login si no hay sessión activa
+        exit();
+    }
 $errores = [];
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nomRuta = $_POST['title'];
@@ -36,77 +40,84 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!is_numeric($desnivel)) {
         $errores[] = "El valor del desnivel debe ser numérico.";
     }
-    if(empty($nvlTec)){
+    if (empty($nvlTec)) {
         $errores[] = "Introduce un nivel tecnico.";
     }
-    if(empty($nvlFis)){
+    if (empty($nvlFis)) {
         $errores[] = "Introduce un nivel físico.";
     }
-    if(empty($fotos['name'][0])){
+    if (empty($fotos['name'][0])) {
         $errores[] = "Sube al menos una foto.";
-    }else{
+    } else {
         $numArchivos = count($fotos['name']);
-        if($numArchivos > 5) {
+        if ($numArchivos > 5) {
             $errores[] = "Máximo 5 fotos permitidas.";
         }
-        for($i = 0; $i < $numArchivos; $i++) {
-        $nombreArchivo = $fotos['name'][$i];
-        $tipoArchivo = $fotos['type'][$i];
-        $tamañoArchivo = $fotos['size'][$i];
-        $errorArchivo = $fotos['error'][$i];
-        
-        // Verificar que no haya errores en la subida
-        if($errorArchivo !== UPLOAD_ERR_OK) {
-            $errores[] = "Error al subir el archivo: $nombreArchivo";
-            continue;
-        }
-        
-        // Validar tipo de archivo
-        $extensionesPermitidas = ['image/jpeg', 'image/jpg', 'image/png'];
-        if(!in_array($tipoArchivo, $extensionesPermitidas)) {
-            $errores[] = "El archivo $nombreArchivo no es una imagen válida (solo JPG/PNG)";
-        }
-        
-        // Validar tamaño
-        if($tamañoArchivo > 2 * 1024 * 1024) {
-            $errores[] = "El archivo $nombreArchivo es demasiado grande (máx. 2MB)";
-        }
+        for ($i = 0; $i < $numArchivos; $i++) {
+            $nombreArchivo = $fotos['name'][$i];
+            $tipoArchivo = $fotos['type'][$i];
+            $tamañoArchivo = $fotos['size'][$i];
+            $errorArchivo = $fotos['error'][$i];
 
-        $exetension = pathinfo($nombreArchivo, PATHINFO_EXTENSION);// Extraemos la extensión
-        $nomUnico = uniqid() . '_' . time() . '.' . $exetension; //Creamos un nombre de archivo unico con uniqid que da un id unico, la hora y por ultimo la extensión
-        $ruta = __DIR__ . '/../photos/' . $nomUnico; //la ruta donde se guardará el archivo (con el nombre del archivo)
-        $rutaOrigi = __DIR__ . '/../photos/'; //el nombre del directorio donde guardaremos las fotos
+            // Verificar que no haya errores en la subida
+            if ($errorArchivo !== UPLOAD_ERR_OK) {
+                $errores[] = "Error al subir el archivo: $nombreArchivo";
+                continue;
+            }
 
-        if (!is_dir($rutaOrigi)) {
-            mkdir($rutaOrigi, 0755, true); // En caso de que no esté creado el directorio, lo crea.
+            // Validar tipo de archivo
+            $extensionesPermitidas = ['image/jpeg', 'image/jpg', 'image/png'];
+            if (!in_array($tipoArchivo, $extensionesPermitidas)) {
+                $errores[] = "El archivo $nombreArchivo no es una imagen válida (solo JPG/PNG)";
+            }
+
+            // Validar tamaño
+            if ($tamañoArchivo > 2 * 1024 * 1024) {
+                $errores[] = "El archivo $nombreArchivo es demasiado grande (máx. 2MB)";
+            }
+
+            $exetension = pathinfo($nombreArchivo, PATHINFO_EXTENSION);// Extraemos la extensión
+            $nomUnico = uniqid() . '_' . time() . '.' . $exetension; //Creamos un nombre de archivo unico con uniqid que da un id unico, la hora y por ultimo la extensión
+            $ruta = __DIR__ . '/../photos/' . $nomUnico; //la ruta donde se guardará el archivo (con el nombre del archivo)
+            $rutaOrigi = __DIR__ . '/../photos/'; //el nombre del directorio donde guardaremos las fotos
+
+            if (!is_dir($rutaOrigi)) {
+                mkdir($rutaOrigi, 0755, true); // En caso de que no esté creado el directorio, lo crea.
+            }
+
+            if (move_uploaded_file($fotos['tmp_name'][$i], $ruta)) {
+                $nomFotos[] = $nomUnico; // Mueve las fotos a la ruta elegida.
+            } else {
+                $errores[] = "error"; // en caso de fallar da error
+            }
         }
+        
 
-        if (move_uploaded_file($fotos['tmp_name'][$i], $ruta)) {
-            $nomFotos[] = $nomUnico; // Mueve las fotos a la ruta elegida.
+    }
+    if (empty($errores)) {
+            //crear un array con todos los campos de la ruta en caso de que no haya habido errores
+            $nuevaRuta = [
+                "nombre" => $nomRuta,
+                "descripcion" => $desc,
+                "dificultad" => $difRuta,
+                "distancia" => $distancia,
+                "desnivel" => $desnivel,
+                "nivel_tecnico" => $nvlTec,
+                "nivel_fisico" => $nvlFis,
+                "imagen" => $nomFotos
+            ];
+            // $rutas[] = $nuevaRuta;
+            if (!isset($_SESSION['rutas'])) {
+                $_SESSION['rutas'] = []; //si no hay un array en sessión para las rutas, lo inicializa
+            }
+            $_SESSION['rutas'][] = $nuevaRuta;
+            header('Location: list.php');
+            exit();
         } else {
-            $errores[] = "error"; // en caso de fallar da error
+            // si hay errores los muestra por pantalla.
+            $mensaje = implode("<br>", $errores);
+            $tipo_mensaje = "error";
         }
-    }
-    if(empty($errores)){
-        //crear un array con todos los campos de la ruta en caso de que no haya habido errores
-        $nuevaRuta = [
-            "nombre" => $nomRuta,
-            "descripcion" => $desc,
-            "dificultad" => $difRuta,
-            "distancia" => $distancia,
-            "desnivel" => $desnivel,
-            "nivel_tecnico" => $nvlTec,
-            "nivel_fisico" => $nvlFis,
-            "imagen" => $nomFotos
-        ];
-        $rutas[] = $nuevaRuta;
-    }else{
-    // si hay errores los muestra por pantalla.
-        $mensaje = implode("<br>", $errores);
-        $tipo_mensaje = "error";
-    }
-
-    }
 }
 ?>
 <meta charset="UTF-8">
@@ -220,5 +231,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </main>
 
 <?php
-    include "../../includes/footer.php";
+include "../../includes/footer.php";
 ?>
